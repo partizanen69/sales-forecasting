@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App.js'
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
   , document.getElementById('app')
 )

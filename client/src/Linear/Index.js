@@ -1,39 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Tabs, Tab } from 'react-bootstrap';
 
+import FileLoader from './FileLoader/FileLoader';
+import DataTable from './DataTable/DataTable';
 import Styles from './Styles';
 
-class Linear extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fileContent: '',
-    };
-  }
+export default function Linear() {
+    const [ tableData, setTableData ] = useState([]);
 
-  startLoading() {
-    const fileReader = new FileReader();
-    console.log('fileReader', fileReader);
-    console.log('this', this);
-    console.log('this.sta', this.state.fileContent);
-  }
-
-  render() {
     return <Styles>
-      <div>Linear</div>
-      
-      <input 
-        type='file' 
-        className='file-input' 
-        accept='.csv' 
-        onChange={e => this.setState({ fileContent: e.target.files[0] })}
-      />
+        <FileLoader setTableData={setTableData} />
 
-      <button onClick={() => this.startLoading()}>
-        Click me
-      </button>
+        <Tabs defaultActiveKey="data">
+            <Tab eventKey="data" title="Data">
+                <DataTable tableData={tableData} />
+            </Tab>
+            <Tab eventKey="chart" title="Chart">
+                <p>Forecast chart will be placed here</p>
+            </Tab>
+        </Tabs>
     </Styles>
-  }
-
 }
-
-export default Linear;
