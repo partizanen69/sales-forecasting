@@ -9,7 +9,7 @@ export default function Linear() {
     const [ tableData, setTableData ] = useState([]);
 
     return <Styles>
-        <FileLoader setTableData={setTableData} />
+        <FileLoader tableData={tableData} setTableData={setTableData} />
 
         <Tabs defaultActiveKey="data">
             <Tab eventKey="data" title="Data">

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
 import { FaFileCsv, FaFileUpload } from 'react-icons/fa';
 
 import FileText from './FileText';
 import Styles from './Styles';
+import CalcButton from "./CalcButton/CalcButton";
 
-function FileLoader({ setTableData }) {
+function FileLoader({ setTableData, tableData }) {
     let fileObj;
     let fileReader = {};
     let fileTextElem = React.createRef();
@@ -15,14 +15,6 @@ function FileLoader({ setTableData }) {
         <div>Linear</div>
 
         <div className='uploader'>
-            <label
-                className='upload btn btn-outline-success'
-                onClick={startLoading}
-            >
-                <i><FaFileUpload /></i>
-                Upload
-            </label>
-
             <label className='upload-wrap btn btn-outline-dark'>
                 <input
                     type='file'
@@ -36,19 +28,15 @@ function FileLoader({ setTableData }) {
             </label>
 
             <FileText ref={fileTextElem} />
+
+            <CalcButton tableData={tableData} />
         </div>
     </Styles>
 
     function acceptFile(e) {
-        console.log('e.target.files', e.target.files[0]);
         fileObj = e.target.files[0];
-        console.log('fileObj', fileObj);
-
         fileTextElem.current.change(fileObj.name);
-    }
 
-    function startLoading() {
-        console.log('fileObj', fileObj);
         if (!fileObj) return;
 
         fileReader = new FileReader();
@@ -103,12 +91,14 @@ function FileLoader({ setTableData }) {
             data.push({ week: +week, sales });
         }
 
+        fileTextElem.current.change('');
         setTableData(data);
     }
 }
 
 FileLoader.propTypes = {
     setTableData: PropTypes.func.isRequired,
+    tableData: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default FileLoader;

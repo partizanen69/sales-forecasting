@@ -13,7 +13,10 @@ class FileText extends React.Component {
     render() {
         const { fileName } = this.state;
         return (
-            <div>{fileName ? `${fileName.slice(0, 20)}...` : 'No file choosen yet'}</div>
+            <div className='file-text'>{fileName ?
+                fileName.length >= 20 ? `${fileName.slice(0, 20)}...` : fileName
+                : 'No file choosen yet'}
+            </div>
         )
     }
 

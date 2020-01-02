@@ -11,14 +11,14 @@ function DataTable({ tableData }) {
     return <Styles>
         <Table striped bordered hover>
             <thead>
-                <tr>
-                    <th>Week ISO</th>
-                    <th>Sales</th>
-                </tr>
+            <tr>
+                <th>Week ISO</th>
+                <th>Sales</th>
+            </tr>
             </thead>
             <tbody>
-                {tableData.length ?
-                    tableData.map((row, idx) => (<TableRow key={idx} row={row} idx={idx} />)) : null}
+            {tableData.length ?
+                tableData.map((row, idx) => (<TableRow key={idx} row={row} idx={idx} />)) : null}
             </tbody>
         </Table>
     </Styles>

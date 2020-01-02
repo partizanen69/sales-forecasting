@@ -10,20 +10,6 @@ export default styled.div`
             margin: 0;
         }
         
-        .upload {
-            display: flex;
-            align-items: center;
-            padding-top: 0;
-            padding-bottom: 2px;
-            margin-right: 10px;
-            cursor: pointer;
-            
-            i {
-                font-size: 18px;
-                margin-right: 5px;
-            }
-        }
-        
         .upload-wrap {
             cursor: pointer;
             padding-top: 0;
@@ -43,6 +29,10 @@ export default styled.div`
                     margin-right: 5px;
                 }
             }
-        }  
+        }
+        
+        .file-text {
+            margin-right: 10px;
+        }
     }
 `;
