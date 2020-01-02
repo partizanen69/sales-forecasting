@@ -8,7 +8,7 @@ def calc_linear(body):
     
     rows=body['rows']
     for idx, row in enumerate(rows):
-        if type(row['sales']) is not int:
+        if type(row['sales']) is not int and type(row['sales']) is not float:
             return { 'err': f'Sales value at {idx+1} row is not a number' }
         if type(row['week']) is not int:
             return { 'err': f'Week value at {idx+1} row is not a number' }
@@ -102,13 +102,14 @@ def calc_linear(body):
     arr = abs((df['sales'] - df['forecast']) / df['sales'])
     mape = 1 / arr.count() * arr.sum()
 
-    dict_d = df['sales'].tolist()
+    df = df.fillna('')
+    data = df.to_dict('records')
 
     result = {
-        "dict_d": dict_d,
-        "mape": mape,
-        "stdev_on_fcst": stdev_on_fcst,
-        "stdev_on_sales": stdev_on_sales,
+        'data': data,
+        'mape': mape,
+        'stdev_on_fcst': stdev_on_fcst,
+        'stdev_on_sales': stdev_on_sales,
     }
 
 

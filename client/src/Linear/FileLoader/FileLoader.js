@@ -29,15 +29,14 @@ function FileLoader({ setTableData, tableData }) {
 
             <FileText ref={fileTextElem} />
 
-            <CalcButton tableData={tableData} />
+            <CalcButton tableData={tableData} setTableData={setTableData} />
         </div>
     </Styles>
 
     function acceptFile(e) {
         fileObj = e.target.files[0];
+        e.target.value = null;
         fileTextElem.current.change(fileObj.name);
-
-        if (!fileObj) return;
 
         fileReader = new FileReader();
         fileReader.onload = processLoadedFile;

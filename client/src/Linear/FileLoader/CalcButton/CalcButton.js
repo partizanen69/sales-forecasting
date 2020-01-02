@@ -9,7 +9,7 @@ import Loader from '../../../components/Loader/Loader';
 import { AiFillCalculator } from 'react-icons/ai';
 import { handleAxiosError } from '../../../sharedLib';
 
-function CalcButton({ tableData }) {
+function CalcButton({ tableData, setTableData }) {
     let [ isLoading, setLoading ] = useState(false);
 
     return <Styles>
@@ -59,24 +59,21 @@ function CalcButton({ tableData }) {
             return alert(msg);
         }
 
-        console.log({ data, status });
-
         if (typeof data === 'string') {
             try { data = JSON.parse(data); }
             catch(err) { console.error('Could not parse JSON data', err); }
         }
 
-        console.log({ data, status });
-
-
-
+        console.log('startCalculation received result:', { data, status });
 
         setLoading(false);
+        setTableData(data.data);
     }
 }
 
 CalcButton.propTypes = {
     tableData: PropTypes.arrayOf(PropTypes.object),
+    setTableData: PropTypes.func.isRequired,
 }
 
 export default CalcButton;
