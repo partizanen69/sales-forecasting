@@ -107,10 +107,11 @@ def calc_linear(body):
 
     result = {
         'data': data,
-        'mape': mape,
-        'stdev_on_fcst': stdev_on_fcst,
-        'stdev_on_sales': stdev_on_sales,
+        'mape': round(mape, 2),
+        'stdev_on_fcst': round(stdev_on_fcst, 2),
+        'stdev_on_sales': round(stdev_on_sales, 2),
+        'a': round(a, 2),
+        'b': round(b, 2),
     }
-
 
     return { 'result': result }

@@ -6,14 +6,12 @@ import FileText from './FileText';
 import Styles from './Styles';
 import CalcButton from "./CalcButton/CalcButton";
 
-function FileLoader({ setTableData, tableData }) {
+function FileLoader({ setTableData, tableData, setFcstParams }) {
     let fileObj;
     let fileReader = {};
     let fileTextElem = React.createRef();
 
     return <Styles>
-        <div>Linear</div>
-
         <div className='uploader'>
             <label className='upload-wrap btn btn-outline-dark'>
                 <input
@@ -29,7 +27,11 @@ function FileLoader({ setTableData, tableData }) {
 
             <FileText ref={fileTextElem} />
 
-            <CalcButton tableData={tableData} setTableData={setTableData} />
+            <CalcButton 
+                tableData={tableData} 
+                setTableData={setTableData} 
+                setFcstParams={setFcstParams}
+            />
         </div>
     </Styles>
 
@@ -98,6 +100,7 @@ function FileLoader({ setTableData, tableData }) {
 FileLoader.propTypes = {
     setTableData: PropTypes.func.isRequired,
     tableData: PropTypes.arrayOf(PropTypes.object),
+    setFcstParams: PropTypes.func.isRequired,
 }
 
 export default FileLoader;

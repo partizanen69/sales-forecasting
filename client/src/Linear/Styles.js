@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export default styled.div`
+    p {
+        margin-bottom: 0.1rem;
+    }
+
     .nav-tabs {
         border: none;
-        margin-top: 30px;
+        margin-top: 15px;
     }
     
     .tab-content {

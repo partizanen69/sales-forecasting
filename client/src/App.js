@@ -1,13 +1,12 @@
 import React from 'react'
 
-import { Button, Container, Navbar, Nav } from 'react-bootstrap';
-import { Switch, Route, Link } from "react-router-dom";
+import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Switch, Route } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 
 import Styles from './Styles';
 import Home from './Home/';
 import Linear from './Linear/';
-import Multiple from './Multiple/';
 
 class App extends React.Component {
   render(){
@@ -27,10 +26,6 @@ class App extends React.Component {
                   <Nav.Link>Linear</Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to='/multiple'>
-                  <Nav.Link>Multiple</Nav.Link>
-                </LinkContainer>
-
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -39,7 +34,6 @@ class App extends React.Component {
         <Container>
           <Switch>
             <Route exact path="/linear" component={Linear} />
-            <Route exact path="/multiple" component={Multiple} />
             <Route path="/" component={Home} />
           </Switch>
         </Container>

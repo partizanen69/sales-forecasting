@@ -5,7 +5,7 @@ module.exports = {
     entry : './src/index.js',
     output : {
         path : path.resolve(__dirname , 'dist'),
-        filename: 'index_bundle.js',
+        filename: 'static/index_bundle.js',
     },
     module : {
         rules : [
@@ -16,13 +16,13 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         proxy: {
-            '/api': 'http://localhost:5000'
+            '/api': 'http://localhost:5000',
         }
     },
     mode: 'development',
     plugins : [
         new HtmlWebpackPlugin ({
             template : 'public/index.html'
-        })
+        }),
     ]
 }

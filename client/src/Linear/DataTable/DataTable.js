@@ -6,8 +6,6 @@ import TableRow from './TableRow/TableRow';
 import Styles from './Styles';
 
 function DataTable({ tableData }) {
-    console.log('tableData', tableData);
-
     const { 
         year, just_week, period_num, mov_avg, seas_coef, sales_clear_of_seas,
         x_mult_y, x_squared, trend, forecast,

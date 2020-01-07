@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import qs from 'qs';
+import { Button } from 'react-bootstrap';
 
 import Styles from './Styles';
-import { Button } from 'react-bootstrap';
 import Loader from '../../../components/Loader/Loader';
 import { AiFillCalculator } from 'react-icons/ai';
 import { handleAxiosError } from '../../../sharedLib';
 
-function CalcButton({ tableData, setTableData }) {
+function CalcButton({ tableData, setTableData, setFcstParams }) {
     let [ isLoading, setLoading ] = useState(false);
 
     return <Styles>
@@ -68,12 +67,16 @@ function CalcButton({ tableData, setTableData }) {
 
         setLoading(false);
         setTableData(data.data);
+        
+        const { justToRename = data, ...fcstParams } = data;
+        setFcstParams(fcstParams);
     }
 }
 
 CalcButton.propTypes = {
     tableData: PropTypes.arrayOf(PropTypes.object),
     setTableData: PropTypes.func.isRequired,
+    setFcstParams: PropTypes.func.isRequired,
 }
 
 export default CalcButton;
